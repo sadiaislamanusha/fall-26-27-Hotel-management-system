@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feedback & Complaints - Hotel Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app-layout">
+
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <img src="images/hotel-logo.jpg" alt="Hotel Logo">
+
+            <div>
+                <h3>Hotel Management System</h3>
+                <p>Customer Portal</p>
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION MENU -->
+        <nav>
+
+            <a href="dashboard.html">🏠 Dashboard</a>
+
+            <a href="roombooking.html">🛏 Room Booking</a>
+
+            <a href="mybookings.html">📋 My Bookings</a>
+
+            <a href="payment.html">💳 Payment</a>
+
+            <a href="feedbackcomplaints.html" class="active">
+                💬 Feedback & Complaints
+            </a>
+
+            <a href="lostfound.html">🔍 Lost & Found</a>
+
+            <a href="logout.html">↪ Logout</a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+
+        <!-- TOP HEADER -->
+        <header class="topbar">
+
+            <h1>5. Feedback & Complaints</h1>
+
+            <div class="profile">
+
+                <img src="images/user.png" alt="Customer Profile">
+
+                <span>Rahim Ahmed</span>
+
+                <span>⌄</span>
+
+            </div>
+
+        </header>
+
+
+        <!-- FEEDBACK AND COMPLAINT SECTION -->
+        <section class="two-column">
+
+
+            <!-- CUSTOMER FEEDBACK -->
+            <div class="panel">
+
+                <h2>⭐ Give Your Feedback</h2>
+
+                <form class="stack-form">
+
+
+                    <!-- OVERALL SERVICE RATING -->
+                    <div class="form-group">
+
+                        <label>Overall Service Rating</label>
+
+                        <div class="rating">
+
+                            <label>
+
+                                <input
+                                    type="radio"
+                                    name="rating"
+                                    value="1"
+                                    required
+                                >
+
+                                <span>★</span>
+
+                                <small>1</small>
+
+                            </label>
+
+
+                            <label>
+
+                                <input
+                                    type="radio"
+                                    name="rating"
+                                    value="2"
+                                >
+
+                                <span>★</span>
+
+                                <small>2</small>
+
+                            </label>
+
+
+                            <label>
+
+                                <input
+                                    type="radio"
+                                    name="rating"
+                                    value="3"
+                                >
+
+                                <span>★</span>
+
+                                <small>3</small>
+
+                            </label>
+
+
+                            <label>
+
+                                <input
+                                    type="radio"
+                                    name="rating"
+                                    value="4"
+                                >
+
+                                <span>★</span>
+
+                                <small>4</small>
+
+                            </label>
+
+
+                            <label>
+
+                                <input
+                                    type="radio"
+                                    name="rating"
+                                    value="5"
+                                >
+
+                                <span>★</span>
+
+                                <small>5</small>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- WRITE FEEDBACK -->
+                    <div class="form-group">
+
+                        <label for="feedback">
+                            Write Your Feedback
+                        </label>
+
+                        <textarea
+                            id="feedback"
+                            name="feedback"
+                            rows="4"
+                            placeholder="Write your feedback here..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- SUBMIT FEEDBACK -->
+                    <button type="submit" class="button">
+
+                        Submit Feedback
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- CUSTOMER COMPLAINT -->
+            <div class="panel">
+
+                <h2>🗨 Submit a Complaint</h2>
+
+                <form class="stack-form">
+
+
+                    <!-- COMPLAINT TYPE -->
+                    <div class="form-group">
+
+                        <label for="complaint-type">
+                            Complaint Type
+                        </label>
+
+                        <select
+                            id="complaint-type"
+                            name="complaint-type"
+                            required
+                        >
+
+                            <option value="">
+                                Select Complaint Type
+                            </option>
+
+                            <option value="room-service">
+                                Room Service
+                            </option>
+
+                            <option value="cleanliness">
+                                Cleanliness
+                            </option>
+
+                            <option value="food-quality">
+                                Food Quality
+                            </option>
+
+                            <option value="staff-behaviour">
+                                Staff Behaviour
+                            </option>
+
+                            <option value="payment-issue">
+                                Payment Issue
+                            </option>
+
+                            <option value="other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- COMPLAINT DETAILS -->
+                    <div class="form-group">
+
+                        <label for="complaint">
+                            Complaint Details
+                        </label>
+
+                        <textarea
+                            id="complaint"
+                            name="complaint"
+                            rows="4"
+                            placeholder="Describe your complaint here..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- SUBMIT COMPLAINT -->
+                    <button type="submit" class="button">
+
+                        Submit Complaint
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- PREVIOUS FEEDBACK AND COMPLAINTS -->
+        <section class="panel">
+
+            <h2>📋 Previous Feedback / Complaints</h2>
+
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Date</th>
+
+                            <th>Type</th>
+
+                            <th>Details</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <!-- FEEDBACK RECORD 1 -->
+                        <tr>
+
+                            <td>2025-11-10</td>
+
+                            <td>Feedback</td>
+
+                            <td>Great service and clean room!</td>
+
+                            <td>
+
+                                <span class="status confirmed">
+                                    Closed
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- COMPLAINT RECORD -->
+                        <tr>
+
+                            <td>2025-11-15</td>
+
+                            <td>Complaint</td>
+
+                            <td>Room AC was not working.</td>
+
+                            <td>
+
+                                <span class="status pending">
+                                    In Progress
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- FEEDBACK RECORD 2 -->
+                        <tr>
+
+                            <td>2025-11-20</td>
+
+                            <td>Feedback</td>
+
+                            <td>Very friendly staff.</td>
+
+                            <td>
+
+                                <span class="status confirmed">
+                                    Closed
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+<script src="Customer_JS/data.js"></script>
+<script src="Customer_JS/common.js"></script>
+<script src="Customer_JS/feedbackcomplaints.js"></script>
+<script src="Customer_JS/logout.js"></script>
+</body>
+</html>

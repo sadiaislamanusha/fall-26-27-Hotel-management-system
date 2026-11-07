@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment - Hotel Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <img src="images/hotel-logo.jpg" alt="Hotel Logo">
+
+            <div>
+                <h3>Hotel Management System</h3>
+                <p>Customer Portal</p>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">🏠 Dashboard</a>
+
+            <a href="roombooking.html">🛏 Room Booking</a>
+
+            <a href="mybookings.html">📋 My Bookings</a>
+
+            <a href="payment.html" class="active">💳 Payment</a>
+
+            <a href="feedbackcomplaints.html">💬 Feedback & Complaints</a>
+
+            <a href="lostfound.html">🔍 Lost & Found</a>
+
+            <a href="logout.html">↪ Logout</a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP HEADER -->
+        <header class="topbar">
+
+            <h1>4. Payment Method</h1>
+
+            <div class="profile">
+
+                <img src="images/user.png" alt="Customer Profile">
+
+                <span>Rahim Ahmed</span>
+
+                <span>⌄</span>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAYMENT SECTION -->
+        <section class="panel">
+
+            <h2>Payment</h2>
+
+            <div class="two-column">
+
+
+                <!-- CHOOSE PAYMENT METHOD -->
+                <div class="subpanel">
+
+                    <h2>💳 Choose Payment Method</h2>
+
+                    <form class="stack-form">
+
+                        <!-- BOOKING ID -->
+                        <div>
+
+                            <label for="booking-id">
+                                Booking ID
+                            </label>
+
+                            <input
+                                type="text"
+                                id="booking-id"
+                                name="booking-id"
+                                placeholder="Enter booking ID"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- PAYMENT AMOUNT -->
+                        <div>
+
+                            <label for="payment-amount">
+                                Total Payment Amount
+                            </label>
+
+                            <input
+                                type="number"
+                                id="payment-amount"
+                                name="payment-amount"
+                                placeholder="Enter amount"
+                                min="1"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- PAYMENT METHOD -->
+                        <fieldset>
+
+                            <legend>
+                                Select Payment Method
+                            </legend>
+
+                            <label>
+
+                                <input
+                                    type="radio"
+                                    name="payment-method"
+                                    value="cash"
+                                    checked
+                                >
+
+                                Cash on Arrival
+
+                            </label>
+
+
+                            <label>
+
+                                <input
+                                    type="radio"
+                                    name="payment-method"
+                                    value="card"
+                                >
+
+                                Credit/Debit Card
+
+                            </label>
+
+
+                            <label>
+
+                                <input
+                                    type="radio"
+                                    name="payment-method"
+                                    value="mobile-banking"
+                                >
+
+                                Mobile Banking
+
+                            </label>
+
+                        </fieldset>
+
+
+                        <!-- OPTIONAL TIP SECTION -->
+                        <div class="tip-section">
+
+                            <h3>🎁 Give a Tip (Optional)</h3>
+
+                            <p>
+                                Would you like to give a tip to our hotel staff?
+                            </p>
+
+                            <label for="tip-amount">
+                                Tip Amount
+                            </label>
+
+                            <input
+                                type="number"
+                                id="tip-amount"
+                                name="tip-amount"
+                                min="0"
+                                placeholder="Enter tip amount"
+                            >
+
+                            <small>
+                                Giving a tip is completely optional.
+                            </small>
+
+                        </div>
+
+
+                        <!-- CONFIRM PAYMENT -->
+                        <button type="submit" class="button">
+                            Confirm Payment Method
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- PAYMENT HISTORY -->
+                <div>
+
+                    <div class="subpanel">
+
+                        <h2>💳 My Payment History</h2>
+
+                        <div class="table-wrap">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Payment ID</th>
+
+                                        <th>Booking ID</th>
+
+                                        <th>Amount</th>
+
+                                        <th>Method</th>
+
+                                        <th>Status</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>P101</td>
+
+                                        <td>B001</td>
+
+                                        <td>$200</td>
+
+                                        <td>Mobile Banking</td>
+
+                                        <td>
+                                            <span class="status confirmed">
+                                                Paid
+                                            </span>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>P102</td>
+
+                                        <td>B002</td>
+
+                                        <td>$80</td>
+
+                                        <td>Credit Card</td>
+
+                                        <td>
+                                            <span class="status pending">
+                                                Pending
+                                            </span>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>P103</td>
+
+                                        <td>B003</td>
+
+                                        <td>$120</td>
+
+                                        <td>Cash on Arrival</td>
+
+                                        <td>
+                                            <span class="status confirmed">
+                                                Paid
+                                            </span>
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAYMENT GUIDELINES -->
+                    <div class="info-box">
+
+                        <h2>ℹ Payment Guidelines</h2>
+
+                        <ul>
+
+                            <li>
+                                You can choose any available payment method.
+                            </li>
+
+                            <li>
+                                Payment will be confirmed at check-in for Cash on Arrival.
+                            </li>
+
+                            <li>
+                                For card or mobile banking, follow the instructions during payment.
+                            </li>
+
+                            <li>
+                                Giving a tip to hotel staff is optional.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+<script src="Customer_JS/data.js"></script>
+<script src="Customer_JS/common.js"></script>
+<script src="Customer_JS/payment.js"></script>
+<script src="Customer_JS/logout.js"></script>
+</body>
+</html>

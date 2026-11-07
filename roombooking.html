@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Room Booking - Hotel Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <!-- Logo and Portal Name -->
+            <div class="brand">
+
+                <img src="images/hotel-logo.jpg" alt="Hotel Logo">
+
+                <div>
+                    <h3>Hotel Management System</h3>
+                    <p>Customer Portal</p>
+                </div>
+
+            </div>
+
+
+            <!-- Navigation Menu -->
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html">
+                    <span>🏠</span>
+                    Dashboard
+                </a>
+
+                <a href="roombooking.html" class="active">
+                    <span>🛏</span>
+                    Room Booking
+                </a>
+
+                <a href="mybookings.html">
+                    <span>📋</span>
+                    My Bookings
+                </a>
+
+                <a href="payment.html">
+                    <span>💳</span>
+                    Payment
+                </a>
+
+                <a href="feedbackcomplaints.html">
+                    <span>💬</span>
+                    Feedback & Complaints
+                </a>
+
+                <a href="lostfound.html">
+                    <span>🔍</span>
+                    Lost & Found
+                </a>
+
+                <a href="logout.html">
+                    <span>↪</span>
+                    Logout
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main class="main-content">
+
+
+            <!-- Top Header -->
+            <header class="topbar">
+
+                <h1>2. Room Booking</h1>
+
+                <!-- Customer Profile -->
+                <div class="profile">
+
+                    <img src="images/user.png" alt="Customer Profile">
+
+                    <span>Rahim Ahmed</span>
+
+                    <span class="profile-arrow">⌄</span>
+
+                </div>
+
+            </header>
+
+
+            <!-- ================= BOOK A ROOM ================= -->
+
+            <section class="panel">
+
+                <h2>🗓 Book a Room</h2>
+
+
+                <form class="form-grid">
+
+
+                    <!-- Room Category -->
+                    <div class="form-group">
+
+                        <label for="room-category">
+                            Room Category
+                        </label>
+
+                        <select id="room-category" name="room-category">
+
+                            <option value="single">
+                                Single Room
+                            </option>
+
+                            <option value="double">
+                                Double Room
+                            </option>
+
+                            <option value="deluxe">
+                                Deluxe Room
+                            </option>
+
+                            <option value="suite">
+                                Suite Room
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Check-in Date -->
+                    <div class="form-group">
+
+                        <label for="check-in">
+                            Check-in Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="check-in"
+                            name="check-in"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Check-out Date -->
+                    <div class="form-group">
+
+                        <label for="check-out">
+                            Check-out Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="check-out"
+                            name="check-out"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Number of Guests -->
+                    <div class="form-group">
+
+                        <label for="guests">
+                            Number of Guests
+                        </label>
+
+                        <select id="guests" name="guests">
+
+                            <option value="1">1</option>
+
+                            <option value="2">2</option>
+
+                            <option value="3">3</option>
+
+                            <option value="4">4</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Book Now Button -->
+                    <div class="form-actions">
+
+                        <button type="submit" class="button">
+                            Book Now
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </section>
+
+
+            <!-- ================= AVAILABLE ROOM TYPES ================= -->
+
+            <section class="panel">
+
+                <h2>🛏 Available Room Types</h2>
+
+
+                <div class="room-grid">
+
+
+                    <!-- SINGLE ROOM -->
+                    <div class="room-card">
+
+                        <img
+                            src="images/single-room.jpg"
+                            alt="Single Room"
+                        >
+
+                        <div class="room-details">
+
+                            <h3>Single Room</h3>
+
+                            <h4>$50 per night</h4>
+
+                            <ul>
+
+                                <li>Single Bed</li>
+
+                                <li>AC</li>
+
+                                <li>Free Wi-Fi</li>
+
+                                <li>Attached Bathroom</li>
+
+                                <li>TV</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DOUBLE ROOM -->
+                    <div class="room-card">
+
+                        <img
+                            src="images/double-room.jpg"
+                            alt="Double Room"
+                        >
+
+                        <div class="room-details">
+
+                            <h3>Double Room</h3>
+
+                            <h4>$80 per night</h4>
+
+                            <ul>
+
+                                <li>Double Bed</li>
+
+                                <li>AC</li>
+
+                                <li>Free Wi-Fi</li>
+
+                                <li>Attached Bathroom</li>
+
+                                <li>TV</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DELUXE ROOM -->
+                    <div class="room-card">
+
+                        <img
+                            src="images/deluxe-room.jpg"
+                            alt="Deluxe Room"
+                        >
+
+                        <div class="room-details">
+
+                            <h3>Deluxe Room</h3>
+
+                            <h4>$120 per night</h4>
+
+                            <ul>
+
+                                <li>King Size Bed</li>
+
+                                <li>AC</li>
+
+                                <li>Free Wi-Fi</li>
+
+                                <li>Mini Refrigerator</li>
+
+                                <li>TV</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SUITE ROOM -->
+                    <div class="room-card">
+
+                        <img
+                            src="images/suite-room.jpg"
+                            alt="Suite Room"
+                        >
+
+                        <div class="room-details">
+
+                            <h3>Suite Room</h3>
+
+                            <h4>$200 per night</h4>
+
+                            <ul>
+
+                                <li>Luxury Bed</li>
+
+                                <li>Separate Living Area</li>
+
+                                <li>AC</li>
+
+                                <li>Free Wi-Fi</li>
+
+                                <li>Mini Bar</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+<script src="Customer_JS/data.js"></script>
+<script src="Customer_JS/common.js"></script>
+<script src="Customer_JS/roombooking.js"></script>
+<script src="Customer_JS/logout.js"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lost & Found - Hotel Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app-layout">
+
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <img src="images/hotel-logo.jpg" alt="Hotel Logo">
+
+            <div>
+                <h3>Hotel Management System</h3>
+                <p>Customer Portal</p>
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION MENU -->
+        <nav>
+
+            <a href="dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="roombooking.html">
+                🛏 Room Booking
+            </a>
+
+            <a href="mybookings.html">
+                📋 My Bookings
+            </a>
+
+            <a href="payment.html">
+                💳 Payment
+            </a>
+
+            <a href="feedbackcomplaints.html">
+                💬 Feedback & Complaints
+            </a>
+
+            <a href="lostfound.html" class="active">
+                🔍 Lost & Found
+            </a>
+
+            <a href="logout.html">
+                ↪ Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+
+        <!-- TOP HEADER -->
+        <header class="topbar">
+
+            <h1>6. Lost & Found</h1>
+
+            <div class="profile">
+
+                <img src="images/user.png" alt="Customer Profile">
+
+                <span>Rahim Ahmed</span>
+
+                <span>⌄</span>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE HEADING -->
+        <section class="page-heading">
+
+            <h2>Lost & Found Management</h2>
+
+            <p>
+                Submit a report if you have lost an item in the hotel.
+            </p>
+
+        </section>
+
+
+        <!-- LOST AND FOUND SECTION -->
+        <section class="lost-found-layout">
+
+
+            <!-- LOST ITEM REPORT FORM -->
+            <div class="panel">
+
+                <h2>Report a Lost Item</h2>
+
+                <p class="card-description">
+                    Please provide the details of your lost item.
+                </p>
+
+
+                <form class="stack-form">
+
+
+                    <!-- ITEM NAME -->
+                    <div class="form-group">
+
+                        <label for="itemName">
+                            Item Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="itemName"
+                            name="itemName"
+                            placeholder="Enter lost item name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- LOST LOCATION -->
+                    <div class="form-group">
+
+                        <label for="lostLocation">
+                            Lost Location
+                        </label>
+
+                        <select
+                            id="lostLocation"
+                            name="lostLocation"
+                            required
+                        >
+
+                            <option value="">
+                                Select Location
+                            </option>
+
+                            <option value="room">
+                                Room
+                            </option>
+
+                            <option value="restaurant">
+                                Restaurant
+                            </option>
+
+                            <option value="lobby">
+                                Lobby
+                            </option>
+
+                            <option value="reception">
+                                Reception
+                            </option>
+
+                            <option value="swimming-pool">
+                                Swimming Pool
+                            </option>
+
+                            <option value="parking-area">
+                                Parking Area
+                            </option>
+
+                            <option value="other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- DATE OF LOST -->
+                    <div class="form-group">
+
+                        <label for="lostDate">
+                            Date of Lost
+                        </label>
+
+                        <input
+                            type="date"
+                            id="lostDate"
+                            name="lostDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- ITEM DESCRIPTION -->
+                    <div class="form-group">
+
+                        <label for="itemDescription">
+                            Item Description
+                        </label>
+
+                        <textarea
+                            id="itemDescription"
+                            name="itemDescription"
+                            rows="4"
+                            placeholder="Describe your lost item..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- CONTACT NUMBER -->
+                    <div class="form-group">
+
+                        <label for="contactNumber">
+                            Contact Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="contactNumber"
+                            name="contactNumber"
+                            placeholder="Enter your contact number"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- SUBMIT REPORT -->
+                    <button type="submit" class="button">
+
+                        Submit Report
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- PREVIOUS LOST ITEM REPORTS -->
+            <div class="panel">
+
+                <h2>My Lost Item Reports</h2>
+
+                <p class="card-description">
+                    Check the status of your submitted reports.
+                </p>
+
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Report ID</th>
+
+                                <th>Item Name</th>
+
+                                <th>Lost Location</th>
+
+                                <th>Date</th>
+
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <!-- REPORT 1 -->
+                            <tr>
+
+                                <td>LF-001</td>
+
+                                <td>Mobile Phone</td>
+
+                                <td>Room</td>
+
+                                <td>02 Nov 2026</td>
+
+                                <td>
+
+                                    <span class="status pending">
+                                        Pending
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- REPORT 2 -->
+                            <tr>
+
+                                <td>LF-002</td>
+
+                                <td>Wallet</td>
+
+                                <td>Restaurant</td>
+
+                                <td>28 Oct 2026</td>
+
+                                <td>
+
+                                    <span class="status confirmed">
+                                        Found
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- REPORT 3 -->
+                            <tr>
+
+                                <td>LF-003</td>
+
+                                <td>Watch</td>
+
+                                <td>Lobby</td>
+
+                                <td>20 Oct 2026</td>
+
+                                <td>
+
+                                    <span class="status cancelled">
+                                        Not Found
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- IMPORTANT INFORMATION -->
+                <div class="info-box">
+
+                    <h2>Important Information</h2>
+
+                    <ul>
+
+                        <li>
+                            Provide accurate information about your lost item.
+                        </li>
+
+                        <li>
+                            Our hotel staff will check your report.
+                        </li>
+
+                        <li>
+                            You will be contacted if your item is found.
+                        </li>
+
+                        <li>
+                            Keep your contact number active.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+</div>
+<script src="Customer_JS/data.js"></script>
+<script src="Customer_JS/common.js"></script>
+<script src="Customer_JS/lostfound.js"></script>
+<script src="Customer_JS/logout.js"></script>
+</body>
+</html>

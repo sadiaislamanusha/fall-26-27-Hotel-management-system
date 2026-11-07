@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings - Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <img src="images/hotel-logo.jpg" alt="Hotel Logo">
+
+            <div>
+                <h3>Hotel Management System</h3>
+                <p>Customer Portal</p>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">🏠 Dashboard</a>
+
+            <a href="roombooking.html">🛏 Room Booking</a>
+
+            <a href="mybookings.html" class="active">📋 My Bookings</a>
+
+            <a href="payment.html">💳 Payment</a>
+
+            <a href="feedbackcomplaints.html">💬 Feedback & Complaints</a>
+
+            <a href="lostfound.html">🔍 Lost & Found</a>
+
+            <a href="logout.html">↪ Logout</a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP HEADER -->
+        <header class="topbar">
+
+            <h1>3. My Bookings</h1>
+
+            <div class="profile">
+
+                <img src="images/user.png" alt="Customer Profile">
+
+                <span>Rahim Ahmed</span>
+
+                <span>⌄</span>
+
+            </div>
+
+        </header>
+
+
+        <!-- BOOKING INFORMATION -->
+        <section class="panel">
+
+            <!-- BOOKING STATUS TABS -->
+            <div class="tabs">
+
+                <button type="button" class="active">
+                    All Bookings
+                </button>
+
+                <button type="button">
+                    Confirmed
+                </button>
+
+                <button type="button">
+                    Pending
+                </button>
+
+                <button type="button">
+                    Cancelled
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH TOOLBAR -->
+            <div class="toolbar">
+
+                <input
+                    type="search"
+                    placeholder="🔍 Search by booking ID, room category..."
+                    name="search-booking"
+                >
+
+                <button type="button" class="button">
+                    Search
+                </button>
+
+                <select name="date-filter">
+
+                    <option value="all">All Dates</option>
+
+                    <option value="today">Today</option>
+
+                    <option value="upcoming">Upcoming</option>
+
+                    <option value="completed">Completed</option>
+
+                </select>
+
+            </div>
+
+
+            <!-- BOOKING TABLE -->
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Booking ID</th>
+
+                            <th>Room Category</th>
+
+                            <th>Check-in</th>
+
+                            <th>Check-out</th>
+
+                            <th>Status</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <!-- BOOKING 1 -->
+                        <tr>
+
+                            <td>B001</td>
+
+                            <td>Deluxe Room</td>
+
+                            <td>2025-12-10</td>
+
+                            <td>2025-12-12</td>
+
+                            <td>
+                                <span class="status confirmed">
+                                    Confirmed
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <button type="button">
+                                    View
+                                </button>
+
+                                <button type="button">
+                                    Update
+                                </button>
+
+                                <button type="button">
+                                    Cancel
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- BOOKING 2 -->
+                        <tr>
+
+                            <td>B002</td>
+
+                            <td>Single Room</td>
+
+                            <td>2025-12-20</td>
+
+                            <td>2025-12-22</td>
+
+                            <td>
+                                <span class="status pending">
+                                    Pending
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <button type="button">
+                                    View
+                                </button>
+
+                                <button type="button">
+                                    Update
+                                </button>
+
+                                <button type="button">
+                                    Cancel
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- BOOKING 3 -->
+                        <tr>
+
+                            <td>B003</td>
+
+                            <td>Suite Room</td>
+
+                            <td>2025-12-20</td>
+
+                            <td>2025-12-30</td>
+
+                            <td>
+                                <span class="status confirmed">
+                                    Confirmed
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <button type="button">
+                                    View
+                                </button>
+
+                                <button type="button">
+                                    Update
+                                </button>
+
+                                <button type="button">
+                                    Cancel
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+<script src="Customer_JS/data.js"></script>
+<script src="Customer_JS/common.js"></script>
+<script src="Customer_JS/mybookings.js"></script>
+<script src="Customer_JS/logout.js"></script>
+</body>
+</html>
