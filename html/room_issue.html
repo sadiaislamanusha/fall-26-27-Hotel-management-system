@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Issue Report - Hotel Management System</title>
+    <link rel="stylesheet" href="../css/room_service.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>🏨 Hotel Management System</h2>
+            <p>Room-Service Staff Portal</p>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="food_order.html">
+                🛒 Food Orders
+            </a>
+
+            <a href="room_issue.html" class="active">
+                🗑 Room Issue Report
+            </a>
+
+            <a href="traycollection.html">
+                ♙ Tray Collection
+            </a>
+
+            <a href="amenities.html">
+                ♙ Amenities Request
+            </a>
+
+            <a href="login.html">
+                ↪ Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+
+        <!-- Header -->
+        <header class="top-header">
+
+            <h1>3. Room Issue Report</h1>
+
+            <div class="profile">
+                <span>👤</span>
+                <span>Staff Member</span>
+                <span>⌄</span>
+            </div>
+
+        </header>
+
+
+        <!-- Report Issue Section -->
+        <section class="report-section">
+
+            <!-- Report a Room Issue Form -->
+            <div class="report-form-card">
+
+                <h2>♧ Report a Room Issue</h2>
+
+                <form action="#" method="post">
+
+                    <div class="form-group">
+
+                        <label for="room-number">
+                            Room Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="room-number"
+                            name="room_number"
+                            placeholder="e.g., 305"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="problem-description">
+                            Problem Description
+                        </label>
+
+                        <textarea
+                            id="problem-description"
+                            name="problem_description"
+                            placeholder="Describe the problem..."
+                            rows="3"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button type="submit" class="submit-issue-btn">
+                        Submit Issue
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- Issue Status Guide -->
+            <div class="status-guide">
+
+                <h2>♙ Issue Status Guide</h2>
+
+                <div class="status-item">
+
+                    <span class="status-dot pending-dot"></span>
+
+                    <p>
+                        <strong>Pending</strong>
+                        - Issue reported, not yet started.
+                    </p>
+
+                </div>
+
+
+                <div class="status-item">
+
+                    <span class="status-dot processing-dot"></span>
+
+                    <p>
+                        <strong>Processing</strong>
+                        - Work is in progress.
+                    </p>
+
+                </div>
+
+
+                <div class="status-item">
+
+                    <span class="status-dot solved-dot"></span>
+
+                    <p>
+                        <strong>Solved</strong>
+                        - Issue has been fixed.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Issue Report List -->
+        <section class="issue-report-list">
+
+            <h2>▣ Issue Report List</h2>
+
+
+            <!-- Search Section -->
+            <div class="search-section">
+
+                <form action="#" method="get">
+
+                    <input
+                        type="text"
+                        name="search"
+                        placeholder="⌕ Search by room number..."
+                    >
+
+                    <button type="submit" class="search-btn">
+                        Search
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- Issue Report Table -->
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Room No.</th>
+                        <th>Problem Description</th>
+                        <th>Status</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <!-- First Issue -->
+                    <tr>
+
+                        <td>IR001</td>
+
+                        <td>305</td>
+
+                        <td>AC not working</td>
+
+                        <td>
+
+                            <select name="status_ir001">
+                                <option value="Pending">
+                                    Pending
+                                </option>
+
+                                <option value="Processing">
+                                    Processing
+                                </option>
+
+                                <option value="Solved" selected>
+                                    Solved
+                                </option>
+                            </select>
+
+                        </td>
+
+                        <td>
+                            <button type="button" class="update-btn">
+                                Update
+                            </button>
+                        </td>
+
+                        <td>
+                            <button type="button" class="delete-btn">
+                                Delete
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- Second Issue -->
+                    <tr>
+
+                        <td>IR002</td>
+
+                        <td>308</td>
+
+                        <td>TV not working</td>
+
+                        <td>
+                            <select name="status_ir002">
+                                <option value="Pending">Pending</option>
+                                <option value="Processing" selected>Processing</option>
+                                <option value="Solved">Solved</option>
+                            </select>
+                        </td>
+
+                        <td>
+                            <button type="button" class="update-btn">
+                                Update
+                            </button>
+                        </td>
+
+                        <td>
+                            <button type="button" class="delete-btn">
+                                Delete
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- Third Issue -->
+                    <tr>
+
+                        <td>IR003</td>
+
+                        <td>301</td>
+
+                        <td>Water supply issue</td>
+
+                        <td>
+                            <select name="status_ir003">
+                                <option value="Pending">Pending</option>
+                                <option value="Processing">Processing</option>
+                                <option value="Solved" selected>Solved</option>
+                            </select>
+                        </td>
+
+                        <td>
+                            <button type="button" class="update-btn">
+                                Update
+                            </button>
+                        </td>
+
+                        <td>
+                            <button type="button" class="delete-btn">
+                                Delete
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

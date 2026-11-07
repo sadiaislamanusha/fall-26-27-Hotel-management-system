@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Amenities Request - Hotel Management System</title>
+    <link rel="stylesheet" href="../css/room_service.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>🏨 Hotel Management System</h2>
+            <p>Room-Service Staff Portal</p>
+        </div>
+
+       <nav class="sidebar-menu">
+            <a href="dashboard.html">🏠 Dashboard</a>
+            <a href="food_order.html">🛒 Food Orders</a>
+            <a href="room_issue.html">🗑 Room Issue Report</a>
+            <a href="traycollection.html">🛒 Tray Collection</a>
+            <a href="amenities.html"class="active">♙ Amenities Request</a>
+            <a href="login.html">↪ Logout</a>
+        </nav>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+
+        <!-- Header -->
+        <header class="top-header">
+
+            <h1>5. Room Amenities Request</h1>
+
+            <div class="profile">
+                <span>👤</span>
+                <span>Staff Member</span>
+                <span>⌄</span>
+            </div>
+
+        </header>
+
+
+        <!-- Add New Amenities Request Section -->
+        <section class="amenities-top-section">
+
+
+            <!-- Add New Amenities Request Form -->
+            <div class="add-amenities-card">
+
+                <h2>🎁 Add New Amenities Request</h2>
+
+                <form action="#" method="post">
+
+                    <div class="form-row">
+
+                        <!-- Room Number -->
+                        <div class="form-group">
+
+                            <label for="room-number">
+                                Room Number
+                            </label>
+
+                            <input
+                                type="text"
+                                id="room-number"
+                                name="room_number"
+                                placeholder="e.g., 305"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Item Name -->
+                        <div class="form-group">
+
+                            <label for="item-name">
+                                Item Name
+                            </label>
+
+                            <select
+                                id="item-name"
+                                name="item_name"
+                                required
+                            >
+
+                                <option value="">
+                                    Select Item
+                                </option>
+
+                                <option value="Extra Towel">
+                                    Extra Towel
+                                </option>
+
+                                <option value="Water Bottle">
+                                    Water Bottle
+                                </option>
+
+                                <option value="Soap">
+                                    Soap
+                                </option>
+
+                                <option value="Toiletries Kit">
+                                    Toiletries Kit
+                                </option>
+
+                                <option value="Pillow">
+                                    Pillow
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Add Request Button -->
+                    <button type="submit" class="add-request-btn">
+                        Add Request
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- Available Items -->
+            <div class="available-items-card">
+
+                <h2>🎁 Available Items</h2>
+
+                <ul class="available-items-list">
+
+                    <li>✔ Extra Towel</li>
+
+                    <li>✔ Water Bottle</li>
+
+                    <li>✔ Soap</li>
+
+                    <li>✔ Toiletries Kit</li>
+
+                    <li>✔ Pillow</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Amenities Request List -->
+        <section class="amenities-request-list">
+
+            <h2>🎁 Amenities Request List</h2>
+
+
+            <!-- Search Section -->
+            <div class="search-section">
+
+                <form action="#" method="get">
+
+                    <input
+                        type="text"
+                        name="search"
+                        placeholder="⌕ Search by room number..."
+                    >
+
+                    <button type="submit" class="search-btn">
+                        Search
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- Amenities Request Table -->
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Room No.</th>
+                        <th>Item Name</th>
+                        <th>Request Time</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <!-- First Request -->
+                    <tr>
+
+                        <td>AR001</td>
+
+                        <td>305</td>
+
+                        <td>Extra Towel</td>
+
+                        <td>2026-11-07 09:10 AM</td>
+
+                        <td>
+                            <button type="button" class="delete-btn">
+                                Delete
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- Second Request -->
+                    <tr>
+
+                        <td>AR002</td>
+
+                        <td>301</td>
+
+                        <td>Water Bottle</td>
+
+                        <td>2026-11-07 09:20 AM</td>
+
+                        <td>
+                            <button type="button" class="delete-btn">
+                                Delete
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- Third Request -->
+                    <tr>
+
+                        <td>AR003</td>
+
+                        <td>308</td>
+
+                        <td>Soap</td>
+
+                        <td>2026-11-07 10:05 AM</td>
+
+                        <td>
+                            <button type="button" class="delete-btn">
+                                Delete
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

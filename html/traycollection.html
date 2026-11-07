@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tray Collection Alert - Hotel Management System</title>
+    <link rel="stylesheet" href="../css/room_service.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>🏨 Hotel Management System</h2>
+            <p>Room-Service Staff Portal</p>
+        </div>
+
+       <nav class="sidebar-menu">
+            <a href="dashboard.html">🏠 Dashboard</a>
+            <a href="food_order.html">🛒 Food Orders</a>
+            <a href="room_issue.html">🗑 Room Issue Report</a>
+            <a href="traycollection.html"class="active">🛒 Tray Collection</a>
+            <a href="amenities.html">♙ Amenities Request</a>
+            <a href="login.html">↪ Logout</a>
+        </nav>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+
+        <!-- Header -->
+        <header class="top-header">
+
+            <h1>4. Tray Collection Alert</h1>
+
+            <div class="profile">
+                <span>👤</span>
+                <span>Staff Member</span>
+                <span>⌄</span>
+            </div>
+
+        </header>
+
+
+        <!-- Tray Collection Alerts -->
+        <section class="tray-alert-section">
+
+            <h2>🔔 Tray Collection Alerts (Eating Finished)</h2>
+
+
+            <!-- Alert Table -->
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Room No.</th>
+                        <th>Food Item</th>
+                        <th>Order Time</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <!-- First Alert -->
+                    <tr>
+
+                        <td>FO101</td>
+
+                        <td>305</td>
+
+                        <td>Chicken Burger</td>
+
+                        <td>10:00 AM</td>
+
+                        <td>
+                            <span class="status eating-finished">
+                                Eating Finished
+                            </span>
+                        </td>
+
+                        <td>
+                            <button type="button" class="collect-btn">
+                                Collect Tray
+                            </button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- Second Alert -->
+                    <tr>
+
+                        <td>FO102</td>
+
+                        <td>308</td>
+
+                        <td>Fried Rice</td>
+
+                        <td>10:15 AM</td>
+
+                        <td>
+                            <span class="status eating-finished">
+                                Eating Finished
+                            </span>
+                        </td>
+
+                        <td>
+                            <button type="button" class="collect-btn">
+                                Collect Tray
+                            </button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+
+        <!-- Tray Collection History -->
+        <section class="tray-history-section">
+
+            <h2>◴ Tray Collection History</h2>
+
+
+            <!-- History Table -->
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Room No.</th>
+                        <th>Food Item</th>
+                        <th>Collected Time</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <!-- First History -->
+                    <tr>
+
+                        <td>FO098</td>
+
+                        <td>302</td>
+
+                        <td>Pasta</td>
+
+                        <td>11:05 AM</td>
+
+                        <td>
+                            <span class="status tray-collected">
+                                Tray Collected
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- Second History -->
+                    <tr>
+
+                        <td>FO099</td>
+
+                        <td>307</td>
+
+                        <td>Soup</td>
+
+                        <td>11:10 AM</td>
+
+                        <td>
+                            <span class="status tray-collected">
+                                Tray Collected
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- Third History -->
+                    <tr>
+
+                        <td>FO100</td>
+
+                        <td>305</td>
+
+                        <td>Sandwich</td>
+
+                        <td>11:20 AM</td>
+
+                        <td>
+                            <span class="status tray-collected">
+                                Tray Collected
+                            </span>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
