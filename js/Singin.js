@@ -1,4 +1,3 @@
-// 23-55670-3(Anusha)
 const registerFields = ["fullName", "email", "phone", "username", "role", "password", "confirmPassword", "terms"];
 
 function showError(fieldId, message) {

@@ -1,4 +1,3 @@
-// 23-55670-3(Anusha)
 function showError(fieldId, message) {
   let errSpan = document.getElementById(fieldId + "Error");
   if (errSpan != null) {

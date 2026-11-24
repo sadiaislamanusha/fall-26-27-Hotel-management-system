@@ -1,4 +1,3 @@
-// 23-55670-3(Anusha)
 function generateAdminReport() {
   let availableRooms = 0;
   for (const room of rooms) {
@@ -102,4 +101,8 @@ function openMaintenance()     { window.location.href = "Maintenance.html"; }
 function openStaffReviews()    { window.location.href = "Reviews.html"; }
 function logoutAdmin()         { window.location.href = "login.html"; }
 
-generateAdminReport();
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", generateAdminReport);
+} else {
+  generateAdminReport();
+}

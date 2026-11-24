@@ -1,4 +1,3 @@
-// 23-55670-3(Anusha)
 let rooms = [
   { id: "R-001", number: "101", category: "Single", price: 2000, capacity: 1, status: "Available" },
   { id: "R-002", number: "105", category: "Double", price: 3500, capacity: 2, status: "Booked" },

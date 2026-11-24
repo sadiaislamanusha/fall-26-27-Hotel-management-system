@@ -1,4 +1,3 @@
-// 23-55670-3(Anusha)
 let editComplaintIndex = -1;
 const complaintFields = ["complaintId", "customerName", "roomNumber", "complaintType", "complaintDetailsText", "adminAction"];
 
@@ -18,21 +17,19 @@ function renderComplaints() {
     if (c.status === "In Progress") inProgress++;
     if (c.status === "Resolved") resolved++;
 
-    let matchesKeyword = containsText(c.id, keyword) || containsText(c.customer, keyword) ||
-                         containsText(c.room, keyword) || containsText(c.issue, keyword);
     let matchesStatus = (statusFilter === "All" || c.status === statusFilter);
 
-    if (matchesKeyword && matchesStatus) {
+    if (matchesStatus) {
       let badgeClass = c.status === "Resolved" ? "green" : (c.status === "In Progress" ? "blue" : "orange");
       rows += "<tr>" +
-                "<td>" + c.id + "</td>" +
-                "<td>" + c.customer + "</td>" +
-                "<td>" + c.room + "</td>" +
-                "<td>" + c.issue + "</td>" +
-                "<td>" + c.date + "</td>" +
-                "<td><span class='badge " + badgeClass + "'>" + c.status + "</span></td>" +
-                "<td><a href='#complaintDetails' class='btn btn-small' onclick='editComplaint(" + i + ")'>View Details</a></td>" +
-              "</tr>";
+        "<td>" + c.id + "</td>" +
+        "<td>" + c.customer + "</td>" +
+        "<td>" + c.room + "</td>" +
+        "<td>" + c.issue + "</td>" +
+        "<td>" + c.date + "</td>" +
+        "<td><span class='badge " + badgeClass + "'>" + c.status + "</span></td>" +
+        "<td><a href='#complaintDetails' class='btn btn-small' onclick='editComplaint(" + i + ")'>View Details</a></td>" +
+        "</tr>";
       shown++;
     }
   }

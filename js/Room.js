@@ -1,4 +1,3 @@
-// 23-55670-3(Anusha)
 let editRoomIndex = -1;
 const roomFields = ["roomId", "roomNumber", "category", "price", "capacity"];
 
@@ -13,12 +12,10 @@ function renderRooms() {
   for (let i = 0; i < rooms.length; i++) {
     let room = rooms[i];
 
-    let matchesKeyword = containsText(room.id, keyword) || containsText(room.number, keyword) ||
-                         containsText(room.price, keyword);
     let matchesCategory = (categoryFilter === "All" || room.category === categoryFilter);
     let matchesStatus = (statusFilter === "All" || room.status === statusFilter);
 
-    if (matchesKeyword && matchesCategory && matchesStatus) {
+    if (matchesCategory && matchesStatus) {
       let statusColor;
       switch (room.status) {
         case "Available":
@@ -32,17 +29,17 @@ function renderRooms() {
       }
 
       rows += "<tr>" +
-                "<td>" + room.id + "</td>" +
-                "<td>" + room.number + "</td>" +
-                "<td>" + room.category + "</td>" +
-                "<td>" + room.price + "</td>" +
-                "<td>" + room.capacity + " Person(s)</td>" +
-                "<td><span class='badge " + statusColor + "'>" + room.status + "</span></td>" +
-                "<td>" +
-                  "<button type='button' class='btn btn-small' onclick='editRoom(" + i + ")'>Edit</button>" +
-                  "<button type='button' class='btn btn-small btn-danger' onclick='deleteRoom(" + i + ")'>Delete</button>" +
-                "</td>" +
-              "</tr>";
+        "<td>" + room.id + "</td>" +
+        "<td>" + room.number + "</td>" +
+        "<td>" + room.category + "</td>" +
+        "<td>" + room.price + "</td>" +
+        "<td>" + room.capacity + " Person(s)</td>" +
+        "<td><span class='badge " + statusColor + "'>" + room.status + "</span></td>" +
+        "<td>" +
+        "<button type='button' class='btn btn-small' onclick='editRoom(" + i + ")'>Edit</button>" +
+        "<button type='button' class='btn btn-small btn-danger' onclick='deleteRoom(" + i + ")'>Delete</button>" +
+        "</td>" +
+        "</tr>";
       shown++;
     }
   }
