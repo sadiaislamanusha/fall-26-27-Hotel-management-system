@@ -1,13 +1,13 @@
 /* =====================================
    MY BOOKINGS - CUSTOMER PORTAL
-   CRUD OPERATIONS
+   CRUD: View (Read), Update, Cancel
 ===================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
     console.log("My Bookings JavaScript Loaded Successfully!");
 
-    // HTML Elements
+    // ---------- HTML element gulo khuje ber kora ----------
     const tableBody = document.querySelector(
         ".panel .table-wrap table tbody"
     );
@@ -26,12 +26,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const tabs = document.querySelectorAll(".tabs button");
 
-    // Check HTML Elements
+    // Table na pele kaj bondho
     if (!tableBody) {
         console.error("Booking Table Not Found!");
         return;
     }
 
+    // data.js connect ache kina check
     if (typeof getBookings !== "function" ||
         typeof saveBookings !== "function") {
 
@@ -40,11 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Current Filter
+    // Ekhon kon tab select kora ar search e ki lekha ache seta mone rakhar variable
     let selectedStatus = "All Bookings";
     let searchText = "";
 
-    // Date Function
+    // Ajker date (YYYY-MM-DD)
     function getToday() {
 
         const date = new Date();
@@ -55,55 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    // Import existing HTML sample records
-    function importOldRecords(bookings) {
-
-        const oldRows = Array.from(tableBody.querySelectorAll("tr"));
-
-        oldRows.forEach(function (row) {
-
-            const cells = row.querySelectorAll("td");
-
-            if (cells.length < 5) return;
-
-            const id = cells[0].textContent.trim();
-
-            if (!id || bookings.some(item => item.id === id)) {
-                return;
-            }
-
-            const statusElement = cells[4].querySelector(".status");
-
-            bookings.push({
-
-                id: id,
-
-                roomCategory: cells[1].textContent.trim(),
-
-                checkIn: cells[2].textContent.trim(),
-
-                checkOut: cells[3].textContent.trim(),
-
-                guests: 1,
-
-                status: statusElement
-                    ? statusElement.textContent.trim()
-                    : cells[4].textContent.trim()
-
-            });
-
-        });
-
-        saveBookings(bookings);
-
-    }
-
-    // Get Booking Data
+    // Memory theke booking list nao
     let bookings = getBookings();
 
-    importOldRecords(bookings);
-
-    // Create Action Button
+    // Action button (View / Update / Cancel) banay
+    // data-action ar data-id te button er kaj ar booking ID rakha hoy
     function createButton(text, action, id) {
 
         const button = document.createElement("button");
@@ -113,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         button.dataset.action = action;
         button.dataset.id = id;
 
+        // Cancel button ke alada style dewar jonno "danger" class
         if (action === "cancel") {
             button.className = "danger";
         }
@@ -121,16 +79,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    // Display Booking Records
+    // Table e booking gulo dekhay (filter shoho)
     function displayBookings() {
 
         bookings = getBookings();
 
+        // Ager row gulo muche dao
         tableBody.innerHTML = "";
 
+        // Tab, search ar date filter er shorto milaye booking bachai kora
         let filteredBookings = bookings.filter(function (booking) {
 
-            // Status Filter
+            // 1) Status filter (tab)
             const status = String(booking.status || "").toLowerCase();
 
             let statusMatch = true;
@@ -142,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
-            // Search Filter
+            // 2) Search filter (booking ID ba room category diye)
             const id = String(booking.id || "").toLowerCase();
 
             const room = String(
@@ -153,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 id.includes(searchText) ||
                 room.includes(searchText);
 
-            // Date Filter
+            // 3) Date filter
             let dateMatch = true;
 
             const filterValue = dateFilter
@@ -162,12 +122,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (filterValue === "today") {
 
+                // Ajke check-in hobe emon booking
                 dateMatch = booking.checkIn === getToday();
 
             }
 
             else if (filterValue === "upcoming") {
 
+                // Check-in ajker por, ar cancel hoy ni
                 dateMatch =
                     booking.checkIn >= getToday() &&
                     status !== "cancelled";
@@ -176,17 +138,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
             else if (filterValue === "completed") {
 
+                // Check-out hoye gese ba status Completed
                 dateMatch =
                     booking.checkOut < getToday() ||
                     status === "completed";
 
             }
 
+            // Shob shorto mille booking ta dekhano hobe
             return statusMatch && searchMatch && dateMatch;
 
         });
 
-        // No Booking Found
+        // Kono booking na pele message dekhao
         if (filteredBookings.length === 0) {
 
             const row = document.createElement("tr");
@@ -204,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        // Display Every Booking
+        // Protita booking er jonno ekta table row banao
         filteredBookings.forEach(function (booking) {
 
             const row = document.createElement("tr");
@@ -213,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const idCell = document.createElement("td");
             idCell.textContent = booking.id;
 
-            // Room Category
+            // Room category
             const roomCell = document.createElement("td");
             roomCell.textContent = booking.roomCategory;
 
@@ -225,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const checkOutCell = document.createElement("td");
             checkOutCell.textContent = booking.checkOut;
 
-            // Status
+            // Status badge (rong status onujayi change hoy)
             const statusCell = document.createElement("td");
 
             const statusBadge = document.createElement("span");
@@ -248,13 +212,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             statusCell.appendChild(statusBadge);
 
-            // Action Buttons
+            // Action button gulo
             const actionCell = document.createElement("td");
 
             actionCell.appendChild(
                 createButton("View", "view", booking.id)
             );
 
+            // Cancel hoye gele Update ar Cancel button dekhano hobe na
             if (currentStatus !== "Cancelled") {
 
                 actionCell.appendChild(
@@ -267,6 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
+            // Cell gulo row te boshano, tarpor row table e boshano
             row.appendChild(idCell);
             row.appendChild(roomCell);
             row.appendChild(checkInCell);
@@ -280,7 +246,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    // SEARCH OPERATION
+    // ---------- SEARCH ----------
+    // Search box er lekha nie table abar dekhay
     function searchBookings() {
 
         searchText = searchInput.value.trim().toLowerCase();
@@ -297,8 +264,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (searchInput) {
 
+        // Lekhar shathe shathe search hobe
         searchInput.addEventListener("input", searchBookings);
 
+        // Enter chaple form submit na hoye search hobe
         searchInput.addEventListener("keydown", function (event) {
 
             if (event.key === "Enter") {
@@ -313,7 +282,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    // DATE FILTER
+    // ---------- DATE FILTER ----------
+    // Dropdown change hole table abar dekhano
     if (dateFilter) {
 
         dateFilter.addEventListener("change", function () {
@@ -324,7 +294,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    // STATUS TABS
+    // ---------- STATUS TABS ----------
+    // Tab e click korle oi tab "active" hoy ar filter kaj kore
     tabs.forEach(function (tab) {
 
         tab.addEventListener("click", function () {
@@ -345,9 +316,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    // VIEW / UPDATE / CANCEL
+    // ---------- VIEW / UPDATE / CANCEL ----------
+    // Table er moddhe kono button e click korle ei ek ta listener shob handle kore
     tableBody.addEventListener("click", function (event) {
 
+        // Click kora jinish ta data-action wala button kina check
         const button = event.target.closest("button[data-action]");
 
         if (!button) return;
@@ -358,6 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         bookings = getBookings();
 
+        // ID diye oi booking ta khuje ber kora
         const booking = bookings.find(function (item) {
 
             return item.id === bookingID;
@@ -372,7 +346,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        // READ OPERATION - VIEW
+        // READ - booking er details alert e dekhano
         if (action === "view") {
 
             alert(
@@ -395,7 +369,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        // UPDATE OPERATION
+        // UPDATE - room category ar date change kora
         else if (action === "update") {
 
             if (booking.status === "Cancelled") {
@@ -406,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
-            // Change Room Category
+            // Notun room category jiggesh kora
             const newRoom = prompt(
 
                 "Enter New Room Category:\n" +
@@ -417,6 +391,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             );
 
+            // Cancel chaple ekhanei shesh
             if (newRoom === null) return;
 
             const roomList = [
@@ -428,6 +403,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             ];
 
+            // User je nam lekhse seta list e ache kina (boro/choto hater lekha ignore kore)
             const selectedRoom = roomList.find(function (room) {
 
                 return room.toLowerCase() === newRoom.trim().toLowerCase();
@@ -442,7 +418,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
-            // Change Check-in Date
+            // Notun check-in date
             const newCheckIn = prompt(
 
                 "Enter New Check-in Date (YYYY-MM-DD):",
@@ -453,7 +429,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (newCheckIn === null) return;
 
-            // Change Check-out Date
+            // Notun check-out date
             const newCheckOut = prompt(
 
                 "Enter New Check-out Date (YYYY-MM-DD):",
@@ -464,15 +440,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (newCheckOut === null) return;
 
-            // Date Validation
+            // Date ta sothik kina check kore (format ar real date duto-i)
             function validDate(value) {
 
+                // Format YYYY-MM-DD hote hobe
                 if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
                     return false;
                 }
 
                 const date = new Date(value + "T00:00:00");
 
+                // 2026-02-31 er moto vul date dhora porbe
                 return !isNaN(date.getTime()) &&
                     date.toISOString().slice(0, 10) === value;
 
@@ -495,7 +473,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
-            // Save Updated Data
+            // Shob thik thakle booking er data update kora
             booking.roomCategory = selectedRoom;
 
             booking.checkIn = newCheckIn;
@@ -512,11 +490,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        // DELETE OPERATION - CANCEL
+        // CANCEL - booking delete na kore status "Cancelled" kora hoy
         else if (action === "cancel") {
 
             if (booking.status === "Cancelled") return;
 
+            // Confirm korte bola
             const confirmation = confirm(
 
                 "Are you sure you want to cancel Booking " +
@@ -541,7 +520,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    // INITIAL DISPLAY
+    // Page khulle prothome booking gulo dekhao
     displayBookings();
 
     console.log("My Bookings CRUD Operations Ready!");

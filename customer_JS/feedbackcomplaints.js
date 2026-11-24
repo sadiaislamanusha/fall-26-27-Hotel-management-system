@@ -7,10 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Feedback & Complaints JavaScript Loaded!");
 
-    // STORAGE KEY
-    const STORAGE_KEY = "hotelFeedbackComplaints";
-
-    // HTML ELEMENTS
+    // ---------- HTML element gulo khuje ber kora ----------
+    // Page e 2 ta form ache: prothom ta Feedback, dwitiyo ta Complaint
     const forms = document.querySelectorAll(
         ".two-column .panel form.stack-form"
     );
@@ -19,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ".table-wrap table tbody"
     );
 
-    // CHECK HTML CONNECTION
+    // Form ba table na pele kaj bondho
     if (forms.length !== 2 || !tableBody) {
 
         console.error("Feedback HTML elements not found!");
@@ -32,7 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const feedbackForm = forms[0];
     const complaintForm = forms[1];
 
-    // GET TODAY'S DATE
+    // Data memory (RAM) te rakha hoy, localStorage use hoy ni.
+    // Tai page reload dile notun submit kora data haray jay.
+    // null mane ekhono data load kora hoy ni.
+    let memoryRecords = null;
+
+    // Ajker date (YYYY-MM-DD)
     function getToday() {
 
         const date = new Date();
@@ -47,28 +50,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    // LOAD DATA
+    // Record gulo ana
     function getRecords() {
 
-        try {
+        // Ager thekei memory te thakle seta-i dao
+        if (memoryRecords !== null) {
 
-            const savedData = localStorage.getItem(STORAGE_KEY);
-
-            if (savedData !== null) {
-
-                const records = JSON.parse(savedData);
-
-                return Array.isArray(records) ? records : [];
-
-            }
-
-        } catch (error) {
-
-            console.error("Unable to load feedback data:", error);
+            return memoryRecords;
 
         }
 
-        // IMPORT OLD HTML RECORDS
+        // Prothom bar: HTML table e ja sample row ache seta theke record banano
         const oldRows = Array.from(
             tableBody.querySelectorAll("tr")
         );
@@ -77,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const cells = row.querySelectorAll("td");
 
+            // 4 ta column na thakle skip
             if (cells.length < 4) return null;
 
             return {
@@ -103,37 +96,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    // SAVE DATA
+    // Record gulo memory te save kora
     function saveRecords(records) {
 
-        try {
+        memoryRecords = records;
 
-            localStorage.setItem(
-                STORAGE_KEY,
-                JSON.stringify(records)
-            );
-
-            return true;
-
-        } catch (error) {
-
-            console.error("Unable to save data:", error);
-
-            alert("Data could not be saved!");
-
-            return false;
-
-        }
+        return true;
 
     }
 
-    // DISPLAY HISTORY
+    // Previous Feedback / Complaints table e shob record dekhay
     function displayRecords() {
 
         const records = getRecords();
 
+        // Ager row muche dao
         tableBody.innerHTML = "";
 
+        // Kono record na thakle message
         if (records.length === 0) {
 
             const row = document.createElement("tr");
@@ -156,22 +136,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const row = document.createElement("tr");
 
-            // DATE
+            // Date column
             const dateCell = document.createElement("td");
 
             dateCell.textContent = record.date;
 
-            // TYPE
+            // Type column
             const typeCell = document.createElement("td");
 
             typeCell.textContent = record.type;
 
-            // DETAILS
+            // Details column
             const detailsCell = document.createElement("td");
 
             detailsCell.textContent = record.details;
 
-            // STATUS
+            // Status column: Closed hole shobuj, nahole holud badge
             const statusCell = document.createElement("td");
 
             const statusBadge = document.createElement("span");
@@ -200,13 +180,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ==================================
-    // CREATE OPERATION - FEEDBACK
+    // CREATE - FEEDBACK submit
     // ==================================
 
     feedbackForm.addEventListener("submit", function (event) {
 
+        // Page reload bondho
         event.preventDefault();
 
+        // Je star rating select kora ache seta
         const ratingInput = feedbackForm.querySelector(
             'input[name="rating"]:checked'
         );
@@ -215,6 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "#feedback"
         );
 
+        // Rating na dile error
         if (!ratingInput) {
 
             alert("Please select a rating!");
@@ -227,6 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const feedback = feedbackInput.value.trim();
 
+        // Feedback khali hole error
         if (feedback === "") {
 
             alert("Please write your feedback!");
@@ -237,6 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const records = getRecords();
 
+        // Notun feedback record
         const newFeedback = {
 
             id: "FB-" + Date.now(),
@@ -270,11 +255,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // ==================================
-    // CREATE OPERATION - COMPLAINT
+    // CREATE - COMPLAINT submit
     // ==================================
 
     complaintForm.addEventListener("submit", function (event) {
 
+        // Page reload bondho
         event.preventDefault();
 
         const complaintType = complaintForm.querySelector(
@@ -285,6 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "#complaint"
         );
 
+        // Dropdown theke select kora option er lekha
         const selectedOption =
             complaintType.options[complaintType.selectedIndex];
 
@@ -292,6 +279,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const details = complaintInput.value.trim();
 
+        // Type select na korle error
         if (!complaintType.value) {
 
             alert("Please select a complaint type!");
@@ -300,6 +288,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
+        // Details khali hole error
         if (details === "") {
 
             alert("Please describe your complaint!");
@@ -310,6 +299,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const records = getRecords();
 
+        // Notun complaint record (status shuru te In Progress)
         const newComplaint = {
 
             id: "CP-" + Date.now(),
@@ -342,10 +332,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    // INITIALIZE PAGE
+    // Page khulle prothome table dekhao
     displayRecords();
 
-    // REMOVE OLD GET QUERY FROM ADDRESS BAR
+    // Address bar e jodi ?query thake (form GET hoye gele hoy) seta muche dao
     if (window.location.search) {
 
         window.history.replaceState(

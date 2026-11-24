@@ -1,9 +1,10 @@
-/* ROOM BOOKING - CREATE OPERATION */
+/* ROOM BOOKING - CREATE OPERATION (notun booking toiri kora) */
 
 document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Room Booking JavaScript Loaded!");
 
+    // Booking form ta khuje ber kora
     const form = document.querySelector(".form-grid");
 
     if (!form) {
@@ -11,29 +12,32 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // JavaScript will handle validation
+    // Browser er nijer validation bondho, amra nijera JS diye check korbo
     form.noValidate = true;
 
+    // Form er input gulo ber kora
     const category = document.getElementById("room-category");
     const checkIn = document.getElementById("check-in");
     const checkOut = document.getElementById("check-out");
     const guests = document.getElementById("guests");
 
-    // Set minimum booking date
+    // Ajker age er date select kora jabe na
     checkIn.min = todayDate();
     checkOut.min = todayDate();
 
+    // Check-in date change hole check-out er minimum date o change hobe
     checkIn.addEventListener("change", function () {
 
         checkOut.min = checkIn.value;
 
+        // Check-out jodi check-in er age ba shoman hoy tahole muche dao
         if (checkOut.value && checkOut.value <= checkIn.value) {
             checkOut.value = "";
         }
 
     });
 
-    // Success message area
+    // Booking shofol hole je message dekhabo tar jonno ekta khali box
     const message = document.createElement("div");
 
     message.id = "booking-message";
@@ -45,19 +49,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     form.appendChild(message);
 
-    // Form Submit Event
+    // "Book Now" click korle ei code chalu hoy
     form.addEventListener("submit", function (event) {
 
+        // Page reload hoye jaoa bondho kora
         event.preventDefault();
 
         console.log("Booking Form Submitted!");
 
+        // Form er value gulo nao
         const room = category.value;
         const inDate = checkIn.value;
         const outDate = checkOut.value;
         const guestNumber = guests.value;
 
-        // Validation
+        // Kono field khali thakle error
         if (!room || !inDate || !outDate || !guestNumber) {
 
             alert("Please fill in all booking information.");
@@ -65,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        // Check-in date ajker age hole error
         if (inDate < todayDate()) {
 
             alert("Check-in date cannot be in the past.");
@@ -72,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        // Check-out date check-in er por hote hobe
         if (outDate <= inDate) {
 
             alert("Check-out date must be after check-in date.");
@@ -79,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Check data.js functions
+        // data.js thikmoto connect ache kina check
         if (typeof getBookings !== "function" ||
             typeof saveBookings !== "function") {
 
@@ -88,10 +96,10 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Get existing bookings
+        // Ager booking gulo ana
         const bookings = getBookings();
 
-        // Create new booking
+        // Notun booking object toiri
         const newBooking = {
 
             id: generateID(bookings, "B"),
@@ -111,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         };
 
-        // Save booking
+        // List e notun booking jog kore memory te save
         bookings.push(newBooking);
 
         const saved = saveBookings(bookings);
@@ -120,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Display success message
+        // Shofol message dekhano
         message.style.display = "block";
 
         message.style.background = "#e7f6ee";
@@ -140,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "Your Booking ID: " + newBooking.id
         );
 
-        // Reset form
+        // Form khali kore dao
         form.reset();
 
         checkIn.min = todayDate();

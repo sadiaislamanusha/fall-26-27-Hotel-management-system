@@ -1,23 +1,25 @@
+/* LOGOUT - sidebar er Logout link er kaj */
+
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Find Logout link from Sidebar
+    // Sidebar theke Logout link ta khuje ber kora
     const logoutLink = document.querySelector('a[href="logout.html"]');
 
     if (logoutLink) {
 
         logoutLink.addEventListener("click", function (event) {
 
-            // Stop opening logout.html
+            // logout.html page open hoye jaoa bondho kora
             event.preventDefault();
 
-            // Ask for confirmation
+            // User ke jiggesh kora she sure kina
             const confirmLogout = confirm(
                 "Are you sure you want to logout?"
             );
 
             if (confirmLogout) {
 
-                // Show successful logout message
+                // Logout shofol hoyeche sheta dekhano
                 alert("Logout Successful! Thank you for using Hotel Management System.");
 
             }
