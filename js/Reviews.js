@@ -1,4 +1,3 @@
-// 23-55670-3(Anusha)
 let editInvestigationIndex = -1;
 const reviewFields = ["investigationId", "reviewStaffId", "staffName", "investigationDetails"];
 
@@ -17,11 +16,9 @@ function renderReviews() {
     if (r.type === "Positive") positive++;
     if (r.type === "Negative") negative++;
 
-    let matchesKeyword = containsText(r.id, keyword) || containsText(r.staffId, keyword) ||
-                         containsText(r.name, keyword) || containsText(r.feedback, keyword);
     let matchesType = (typeFilter === "All" || r.type === typeFilter);
 
-    if (matchesKeyword && matchesType) {
+    if (matchesType) {
       let badgeClass = r.type === "Positive" ? "green" : "red";
       rows += "<tr>" +
                 "<td>" + r.id + "</td>" +
@@ -110,4 +107,8 @@ function resetReviewForm() {
   clearErrors(reviewFields);
 }
 
-renderReviews();
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", renderReviews);
+} else {
+  renderReviews();
+}

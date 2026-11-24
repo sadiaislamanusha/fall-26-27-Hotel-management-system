@@ -1,4 +1,3 @@
-// 23-55670-3(Anusha)
 let editMaintenanceIndex = -1;
 const maintenanceFields = ["reportId", "damagedItem", "roomNumber", "problemDescription", "repairAction"];
 
@@ -18,21 +17,19 @@ function renderMaintenance() {
     if (m.status === "In Progress") inProgress++;
     if (m.status === "Completed") completed++;
 
-    let matchesKeyword = containsText(m.id, keyword) || containsText(m.item, keyword) ||
-                         containsText(m.room, keyword) || containsText(m.reportedBy, keyword);
     let matchesStatus = (statusFilter === "All" || m.status === statusFilter);
 
-    if (matchesKeyword && matchesStatus) {
+    if (matchesStatus) {
       let badgeClass = m.status === "Completed" ? "green" : (m.status === "In Progress" ? "blue" : "orange");
       rows += "<tr>" +
-                "<td>" + m.id + "</td>" +
-                "<td>" + m.item + "</td>" +
-                "<td>" + m.room + "</td>" +
-                "<td>" + m.reportedBy + "</td>" +
-                "<td>" + m.date + "</td>" +
-                "<td><span class='badge " + badgeClass + "'>" + m.status + "</span></td>" +
-                "<td><a href='#maintenanceAction' class='btn btn-small' onclick='editMaintenance(" + i + ")'>View Details</a></td>" +
-              "</tr>";
+        "<td>" + m.id + "</td>" +
+        "<td>" + m.item + "</td>" +
+        "<td>" + m.room + "</td>" +
+        "<td>" + m.reportedBy + "</td>" +
+        "<td>" + m.date + "</td>" +
+        "<td><span class='badge " + badgeClass + "'>" + m.status + "</span></td>" +
+        "<td><a href='#maintenanceAction' class='btn btn-small' onclick='editMaintenance(" + i + ")'>View Details</a></td>" +
+        "</tr>";
       shown++;
     }
   }

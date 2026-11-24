@@ -1,4 +1,3 @@
-// 23-55670-3(Anusha)
 function showError(fieldId, message) {
   let errEl = document.getElementById(fieldId + "Error");
   if (errEl != null) {
@@ -101,22 +100,18 @@ function validateLogin() {
 
   let form = document.getElementById("loginForm");
 
-  // 1. Admin Login -> Admin.html
   if (username.toLowerCase() === "admin" && (password === "Admin" || password === "Admin123") && role.toLowerCase() === "admin") {
     form.action = "Admin.html";
     return true;
   }
-  // 2. Customer Login -> Dashboard_Customar.html
   else if (username.toLowerCase() === "customer" && (password === "Customer" || password === "customer") && role.toLowerCase() === "customer") {
     form.action = "Dashboard_Customar.html";
     return true;
   }
-  // 3. Staff / Room Service Login -> dashboard_rafi.html
   else if (username.toLowerCase() === "staff" && (password === "Staff" || password === "staff") && role.toLowerCase() === "room service") {
     form.action = "dashboard_rafi.html";
     return true;
   }
-  // 4. Receptionist Login -> Reciptionist Dashboard.html
   else if ((username.toLowerCase() === "reciptionist" || username.toLowerCase() === "receptionist") &&
            (password.toLowerCase() === "reciptionist" || password.toLowerCase() === "receptionist") &&
            (role.toLowerCase() === "receptionist" || role.toLowerCase() === "reciptionist")) {

@@ -1,4 +1,3 @@
-// 23-55670-3(Anusha)
 function renderSalesTable() {
   let rows = "";
   let totalRevAll = 0;
@@ -78,4 +77,8 @@ function resetSalesFilter() {
   renderSalesTable();
 }
 
-renderSalesTable();
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", renderSalesTable);
+} else {
+  renderSalesTable();
+}

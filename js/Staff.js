@@ -1,4 +1,3 @@
-// 23-55670-3(Anusha)
 let editStaffIndex = -1;
 const staffFields = ["staffId", "staffName", "staffEmail", "staffPhone", "staffPosition", "staffSalary"];
 
@@ -13,12 +12,10 @@ function renderStaff() {
   for (let i = 0; i < staffList.length; i++) {
     let staff = staffList[i];
 
-    let matchesKeyword = containsText(staff.name, keyword) || containsText(staff.id, keyword) ||
-                         containsText(staff.email, keyword) || containsText(staff.phone, keyword);
     let matchesPos = (posFilter === "All" || staff.position === posFilter);
     let matchesStatus = (statusFilter === "All" || staff.status === statusFilter);
 
-    if (matchesKeyword && matchesPos && matchesStatus) {
+    if (matchesPos && matchesStatus) {
       let statusColor;
       switch (staff.status) {
         case "Active":
@@ -32,17 +29,17 @@ function renderStaff() {
       }
 
       rows += "<tr>" +
-                "<td>" + staff.id + "</td>" +
-                "<td><strong>" + staff.name + "</strong><br><span class='hint'>" + staff.email + "</span></td>" +
-                "<td>" + staff.position + "</td>" +
-                "<td>" + staff.phone + "</td>" +
-                "<td>" + staff.salary + "</td>" +
-                "<td><span class='badge " + statusColor + "'>" + staff.status + "</span></td>" +
-                "<td>" +
-                  "<button type='button' class='btn btn-small' onclick='editStaff(" + i + ")'>Edit</button>" +
-                  "<button type='button' class='btn btn-small btn-danger' onclick='deleteStaff(" + i + ")'>Delete</button>" +
-                "</td>" +
-              "</tr>";
+        "<td>" + staff.id + "</td>" +
+        "<td><strong>" + staff.name + "</strong><br><span class='hint'>" + staff.email + "</span></td>" +
+        "<td>" + staff.position + "</td>" +
+        "<td>" + staff.phone + "</td>" +
+        "<td>" + staff.salary + "</td>" +
+        "<td><span class='badge " + statusColor + "'>" + staff.status + "</span></td>" +
+        "<td>" +
+        "<button type='button' class='btn btn-small' onclick='editStaff(" + i + ")'>Edit</button>" +
+        "<button type='button' class='btn btn-small btn-danger' onclick='deleteStaff(" + i + ")'>Delete</button>" +
+        "</td>" +
+        "</tr>";
       shown++;
     }
   }
